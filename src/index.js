@@ -21,12 +21,29 @@ const askForRoll = () => {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    test: state
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    rollNew: () => {
+      dispatch(askForRoll());
+    }
+  }
+}
+
+const ConnectedApp = connect(mapStateToProps,mapDispatchToProps)(App);
+
 
 
 const reducer = (state = defaultState, action) => {
   switch(action.type) {
     case ROLL:
     let chosenNumber = Math.floor(Math.random() * QUOTES.length) + 1;
+    console.log(chosenNumber);
     return Object.assign({}, state, {currentQuote: state.quotes[chosenNumber]});
     break;
     default:
@@ -48,8 +65,8 @@ console.log(store.getState());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
 
+      <ConnectedApp />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
