@@ -1,13 +1,17 @@
 import React from 'react';
-import Test from './components/quote-template.js';
+import Quote from './components/quote-template.js';
+import Button from './components/button.js';
 
 import './App.css';
+
+
 
 function App() {
   return (
     <div className="App">
       aa
-      <Test />
+      <Quote />
+      <Button />
     </div>
   );
 }
