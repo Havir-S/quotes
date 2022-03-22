@@ -6,8 +6,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quote: 'quote will go here',
-      author: 'author name'
+      quote: 'Press the button to spawn a quote!',
+      author: ''
     }
     this.changeQuote = this.changeQuote.bind(this);
   }
@@ -15,8 +15,8 @@ class App extends React.Component {
   changeQuote() {
     this.props.rollNew();
     this.setState({
-      quote: this.props.test.currentQuote.context,
-      author: this.props.test.currentQuote.author
+      quote: this.props.currentQuote.context,
+      author: this.props.currentQuote.author
     })
   }
 
@@ -28,7 +28,7 @@ class App extends React.Component {
         <p>{this.state.quote}</p>
         <p>{this.state.author}</p>
         <br/>
-        <button onClick={this.changeQuote}>click me to change quote</button>
+        <button onClick={this.changeQuote}>CLICK ME!</button>
       </div>
     )
   }

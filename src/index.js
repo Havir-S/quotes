@@ -12,7 +12,8 @@ const ROLL = 'ROLL';
 
 const defaultState = {
   currentQuote: {context: '',author: ''},
-  quotes: QUOTES
+  quotes: QUOTES,
+  // backgroundQuotes: []
 }
 
 const askForRoll = () => {
@@ -23,7 +24,8 @@ const askForRoll = () => {
 
 const mapStateToProps = (state) => {
   return {
-    test: state
+    currentQuote: state.currentQuote,
+    // backgroundQuotes: state.backgroundQuotes
   }
 };
 
@@ -42,7 +44,7 @@ const ConnectedApp = connect(mapStateToProps,mapDispatchToProps)(App);
 const reducer = (state = defaultState, action) => {
   switch(action.type) {
     case ROLL:
-    let chosenNumber = Math.floor(Math.random() * QUOTES.length) + 1;
+    let chosenNumber = Math.floor(Math.random() * QUOTES.length);
     console.log(chosenNumber);
     return Object.assign({}, state, {currentQuote: state.quotes[chosenNumber]});
     break;
@@ -52,13 +54,10 @@ const reducer = (state = defaultState, action) => {
 }
 
 const store = createStore(reducer);
+store.dispatch(askForRoll());
+// console.log(store.dispatch(askForRoll()));
+console.log(store.getState());
 
-console.log(store.dispatch(askForRoll()));
-console.log(store.getState());
-console.log(store.dispatch(askForRoll()));
-console.log(store.getState());
-console.log(store.dispatch(askForRoll()));
-console.log(store.getState());
 
 //make it all in one file then reduce to folders
 
