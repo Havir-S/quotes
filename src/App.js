@@ -1,19 +1,26 @@
 import React from 'react';
-import Quote from './components/quote-template.js';
-import Button from './components/button.js';
-
 import './App.css';
 
 
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      quote: 'quote will go here',
+      author: 'author name'
+    }
+  }
 
-function App() {
-  return (
-    <div className="App">
-      aa
-      <Quote />
-      <Button />
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <p>{this.state.quote}</p>
+        <p>{this.state.author}</p>
+        <br/>
+        <button>click me to change quote</button>
+      </div>
+    )
+  }
 }
 
 export default App;
