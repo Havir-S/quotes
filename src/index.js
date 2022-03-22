@@ -21,21 +21,27 @@ const askForRoll = () => {
   }
 }
 
-const reducer = (defaultState, action) => {
+
+
+const reducer = (state = defaultState, action) => {
   switch(action.type) {
     case ROLL:
-    let chosenNumber = Math.floor(Math.random() * defaultState.quotes.length) + 1;
-    return Object.assign({}, defaultState, {currentQuote: defaultState.quotes[chosenNumber]});
+    let chosenNumber = Math.floor(Math.random() * QUOTES.length) + 1;
+    return Object.assign({}, state, {currentQuote: state.quotes[chosenNumber]});
     break;
     default:
-    return defaultState;
+    return state;
   }
-  return {}
 }
 
 const store = createStore(reducer);
 
-
+console.log(store.dispatch(askForRoll()));
+console.log(store.getState());
+console.log(store.dispatch(askForRoll()));
+console.log(store.getState());
+console.log(store.dispatch(askForRoll()));
+console.log(store.getState());
 
 //make it all in one file then reduce to folders
 
