@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500');
+$text-color: #ffffff;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  text-align: center;
+  position: relative;
+  height: 100vh;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+//////////////////////////////
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 300px;
+  width: 50vw;
+  max-width: 600px;
+  height: max-content;
+  box-shadow: 5px 5px 22px #333333;
+  background-color: $text-color;
+  border-radius: 90px 10px;
+  padding: 10px;
+
+  #quote-box {
+    margin: 20px 10px 10px;
+
+    #text {
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    #author {
+      text-align: right;
+      font-style: italic;
+      margin: 10px 15px 0 0;
+      font-size: 1.2rem;
+    }
+
+    .services {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 10px;
+
+      .link {
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 3px 7px;
+        border-radius: 5px;
+        margin: 0 5px;
+        color: $text-color;
+      }
+
+      .link:hover {
+        opacity: 0.8;
+      }
+
+      button {
+        float: right;
+        font-size: 1rem;
+        outline: none;
+        border: 0;
+        padding: 10px;
+        border-radius: 5px;
+        color: $text-color;
+        cursor: pointer;
+      }
+
+      button:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .outside {
+    position: absolute;
+    top: 110%;
+    color: $text-color;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    padding: 7px;
+    overflow: hidden;
+    &:before {
+      background-color: rgba(255, 255, 255, 0.3);
+      content: '';
+      height: 100%;
+      left: -125%;
+      position: absolute;
+      top: 0;
+      transform: skew(-30deg);
+      transition: left 0.5s ease;
+      width: 50%;
+    }
+    &:hover:before {
+      left: 125%;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
